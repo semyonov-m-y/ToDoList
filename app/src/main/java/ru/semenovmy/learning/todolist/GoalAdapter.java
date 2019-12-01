@@ -61,8 +61,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalHolder> {
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public boolean onLongClick(View v) {
-                    PopupMenu menu = new PopupMenu(v.getContext(), v);
+                public boolean onLongClick(View view) {
+                    PopupMenu menu = new PopupMenu(view.getContext(), view);
                     menu.inflate(R.menu.menu);
                     menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
@@ -72,7 +72,6 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalHolder> {
                                     mGoalsManager.deleteGoal(mGoal);
                                     break;
                                 default:
-
                             }
                             return true;
                         }
@@ -84,9 +83,9 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalHolder> {
 
             mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                public void onCheckedChanged(CompoundButton compoundButton, boolean done) {
                     if (compoundButton.getId() == R.id.check_box) {
-                        mGoalsManager.setAsDone(mGoal, b);
+                        mGoalsManager.setAsDone(mGoal, done);
                     }
                 }
             });
